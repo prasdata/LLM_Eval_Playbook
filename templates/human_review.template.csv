@@ -1,0 +1,2 @@
+case_id,topic,task_type,language,target_model,j1_model,j2_model,final_pass_fail,reason_codes,notes_free_text
+CASE_0001,brainstorming,conversation,en,MODEL_X,JUDGE_A,JUDGE_B,,INSTR_FAIL|STYLE_FAIL,
