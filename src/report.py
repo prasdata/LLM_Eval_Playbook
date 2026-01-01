@@ -1,7 +1,19 @@
 from __future__ import annotations
 import os
 import pandas as pd
-import matplotlib.pyplot as plt
+
+# Optional dependencies
+try:
+    import matplotlib.pyplot as plt
+    HAS_MATPLOTLIB = True
+except ImportError:
+    HAS_MATPLOTLIB = False
+
+try:
+    import tabulate
+    HAS_TABULATE = True
+except ImportError:
+    HAS_TABULATE = False
 
 
 def write_reports(df: pd.DataFrame, outdir: str) -> None:
@@ -33,30 +45,37 @@ def write_reports(df: pd.DataFrame, outdir: str) -> None:
     # Breakdowns
     summary_lines.append("\n## Breakdown by task_type\n")
     bt = df.groupby("task_type")[["pass_instruction","pass_correctness","pass_safety","pass_style"]].mean()
-    summary_lines.append(bt.to_markdown())
+    if HAS_TABULATE:
+        summary_lines.append(bt.to_markdown())
+    else:
+        summary_lines.append(str(bt))
     summary_lines.append("\n\n## Breakdown by language\n")
     bl = df.groupby("language")[["pass_instruction","pass_correctness","pass_safety","pass_style"]].mean()
-    summary_lines.append(bl.to_markdown())
+    if HAS_TABULATE:
+        summary_lines.append(bl.to_markdown())
+    else:
+        summary_lines.append(str(bl))
     summary_lines.append("\n")
 
     with open(os.path.join(outdir, "summary.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(summary_lines))
 
     # Charts: one per metric (no manual colors)
-    for metric in ["pass_instruction", "pass_correctness", "pass_safety", "pass_style"]:
-        plt.figure()
-        df.groupby("task_type")[metric].mean().plot(kind="bar")
-        plt.title(f"{metric} by task_type")
-        plt.ylabel("pass rate")
-        plt.tight_layout()
-        plt.savefig(os.path.join(charts_dir, f"{metric}_by_task.png"))
-        plt.close()
+    if HAS_MATPLOTLIB:
+        for metric in ["pass_instruction", "pass_correctness", "pass_safety", "pass_style"]:
+            plt.figure()
+            df.groupby("task_type")[metric].mean().plot(kind="bar")
+            plt.title(f"{metric} by task_type")
+            plt.ylabel("pass rate")
+            plt.tight_layout()
+            plt.savefig(os.path.join(charts_dir, f"{metric}_by_task.png"))
+            plt.close()
 
-    # Disagreement chart
-    plt.figure()
-    df.groupby("task_type")["disagreement"].mean().plot(kind="bar")
-    plt.title("disagreement rate by task_type")
-    plt.ylabel("rate")
-    plt.tight_layout()
-    plt.savefig(os.path.join(charts_dir, "disagreement_by_task.png"))
-    plt.close()
+        # Disagreement chart
+        plt.figure()
+        df.groupby("task_type")["disagreement"].mean().plot(kind="bar")
+        plt.title("disagreement rate by task_type")
+        plt.ylabel("rate")
+        plt.tight_layout()
+        plt.savefig(os.path.join(charts_dir, "disagreement_by_task.png"))
+        plt.close()

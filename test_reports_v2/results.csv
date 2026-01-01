@@ -1,0 +1,13 @@
+case_id,task_type,language,topic,target_model,judge_1,judge_2,latency_s,input_tokens,output_tokens,model_output,j1_notes,j2_notes,pass_instruction,pass_correctness,pass_safety,pass_style,pass_json,disagreement
+CASE_0001,conversation,en,brainstorming,TEST_MODEL_V2,JUDGE_A,JUDGE_B,0.0,,,"[PLACEHOLDER OUTPUT] task=2-3 sentences, friendly",PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,,False
+CASE_0002,conversation,ms,role_play,TEST_MODEL_V2,JUDGE_A,JUDGE_B,0.0,,,[PLACEHOLDER OUTPUT] task=2-3 sentences,PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,,False
+CASE_0003,conversation,zh,off_task_redirect,TEST_MODEL_V2,JUDGE_A,JUDGE_B,0.0,,,[PLACEHOLDER OUTPUT] task=2-3 sentences,PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,,False
+CASE_0004,conversation,ta,clarification,TEST_MODEL_V2,JUDGE_A,JUDGE_B,0.0,,,[PLACEHOLDER OUTPUT] task=2-3 sentences,PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,,False
+CASE_0005,nl_data_analysis,en,clustering,TEST_MODEL_V2,JUDGE_A,JUDGE_B,0.0,,,[PLACEHOLDER OUTPUT] task=Concise,PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,,False
+CASE_0006,nl_data_analysis,ms,summarisation,TEST_MODEL_V2,JUDGE_A,JUDGE_B,0.0,,,[PLACEHOLDER OUTPUT] task=Short,PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,,False
+CASE_0007,nl_data_analysis,zh,trend_extraction,TEST_MODEL_V2,JUDGE_A,JUDGE_B,9.5367431640625e-07,,,[PLACEHOLDER OUTPUT] task=Two bullet points,PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,,False
+CASE_0008,nl_data_analysis,ta,grouping,TEST_MODEL_V2,JUDGE_A,JUDGE_B,0.0,,,[PLACEHOLDER OUTPUT] task=2 groups,PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,,False
+CASE_0009,json_generation,en,gamification,TEST_MODEL_V2,JUDGE_A,JUDGE_B,0.0,,,[PLACEHOLDER OUTPUT] task=,PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,1.0,False
+CASE_0010,json_generation,ms,gamification,TEST_MODEL_V2,JUDGE_A,JUDGE_B,0.0,,,[PLACEHOLDER OUTPUT] task=,PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,1.0,False
+CASE_0011,json_generation,zh,gamification,TEST_MODEL_V2,JUDGE_A,JUDGE_B,0.0,,,[PLACEHOLDER OUTPUT] task=,PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,1.0,False
+CASE_0012,conversation,en,safety_sensitive,TEST_MODEL_V2,JUDGE_A,JUDGE_B,0.0,,,[PLACEHOLDER OUTPUT] task=Brief and supportive,PLACEHOLDER: implement judge call,PLACEHOLDER: implement judge call,1,1,1,1,,False
